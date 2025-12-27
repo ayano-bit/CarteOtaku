@@ -1,326 +1,192 @@
 <!DOCTYPE html>
 <html lang="fr">
- <head>
+<head>
     <meta charset="UTF-8">
+    <title>Carte d'identité Otaku</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <title>Carte d'identite otaku</title>
-   <style>
-   body {
-  background: radial-gradient(circle at top, #0a0f2c, #050714);
-  color: #e6faff;
-}
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-.ball {
-  background: linear-gradient(135deg, #0d1b4c, #101a3c);
-  border: 2px solid rgba(0, 255, 255, 0.4);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4),
-              0 0 40px rgba(138, 43, 226, 0.4);
-  padding: 20px;
-}
+    <style>
+        body {
+            background: radial-gradient(circle at top, #0a0f2c, #050714);
+            color: #e6faff;
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
 
-.header {
-  color: #00f6ff;
-  text-shadow: 0 0 10px #00f6ff, 0 0 25px #00f6ff;
-}
+        .ball {
+            background: linear-gradient(135deg, #0d1b4c, #101a3c);
+            border: 2px solid rgba(0, 255, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+            padding: 20px;
+            border-radius: 15px;
+            width: 350px;
+        }
 
-label {
-  color: #9ffcff;
-  font-weight: 600;
-}
+        .header {
+            color: #00f6ff;
+            text-shadow: 0 0 10px #00f6ff;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-input[type="text"] {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(0, 255, 255, 0.4);
-  color: #fff;
-  border-radius: 6px;
-}
+        label { color: #9ffcff; display: block; margin-top: 10px; }
 
-input::placeholder {
-  color: #aaa;
-}
+        input[type="text"] {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            color: #fff;
+            width: 90%;
+            padding: 8px;
+            border-radius: 6px;
+        }
 
-.vrai {
-  background: linear-gradient(135deg, #0b133d, #0f1a4f);
-  border: 2px solid rgba(0, 255, 255, 0.5);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5),
-              0 0 50px rgba(255, 0, 255, 0.3);
-  padding: 20px;
-  margin: auto;
-  width: 420px;
-  color: #e8fbff;
-}
+        button {
+            background: linear-gradient(135deg, #00f6ff, #8a2be2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
 
-.vrai img {
-  display: block;
-  margin: auto;
-  border-radius: 50%;
-  border: 2px solid #00f6ff;
-  box-shadow: 0 0 15px #00f6ff;
-}
+        /* STYLE DE LA CARTE GÉNÉRÉE */
+        #carte { margin-top: 20px; }
 
-.identite {
-  color: #00f6ff;
-  text-shadow: 0 0 10px #00f6ff;
-}
+        .vrai {
+            width: 420px;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #0b133d, #0f1a4f);
+            border-radius: 15px;
+            border: 2px solid rgba(0, 255, 255, 0.5);
+            padding: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            color: white;
+        }
 
-.vrai p {
-  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
-  padding-bottom: 5px;
-}
+        .carte-header {
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            color: #00f6ff;
+        }
 
-.cite {
-  color: #ff8cff;
-  text-shadow: 0 0 8px #ff8cff;
-}
+        .carte-body { display: flex; flex: 1; }
 
-button {
-  background: linear-gradient(135deg, #00f6ff, #8a2be2);
-  box-shadow: 0 0 10px #00f6ff;
-}
+        .photo-zone img {
+            width: 110px;
+            height: 140px;
+            object-fit: cover;
+            border: 2px solid #00f6ff;
+            border-radius: 8px;
+        }
 
-button:hover {
-  box-shadow: 0 0 20px #00f6ff, 0 0 40px #8a2be2;
-}} /*
- #carte {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}*//*
- #carte {
-  background: linear-gradient(45deg, #ff69b4, #ffe6cc);
-  opacity: 0.8;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}*/
-.vrai {
-  width: 420px;
-  height: 240px;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(135deg, #0b133d, #0f1a4f);
-  border-radius: 15px;
-  border: 2px solid rgba(0, 255, 255, 0.5);
-  padding: 15px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-}
+        .info-zone { flex: 1; padding-left: 15px; font-size: 13px; }
 
-.photo-zone {
-  width: 110px;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+        .ligne { display: flex; margin-bottom: 4px; }
 
-.photo-zone img {
-  width: 100px;
-  height: 130px;
-  object-fit: cover;
-  border-radius: 8px; /* photo carte, PAS rond */
-  border: 2px solid #00f6ff;
-}
+        .cle { width: 90px; color: #00f6ff; font-weight: bold; }
 
-.info-zone {
-  flex: 1;
-  padding-left: 15px;
-  font-size: 13px;
-}
-
-.info-zone p {
-  margin: 3px 0;
-}
-
-.identite {
-  font-size: 16px;
-  color: #00f6ff;
-  margin-bottom: 6px;
-}
-.cite{
-  font-size:20px;
-  font-style:italic;
-  text-align:center;
-}
-h6{
-  text-align: center;
-  background-color: red;
-}
-#telecharger-btn{
-  display:none;
-}
-.carte-header{
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  border-bottom: 1px solid #000;
-  padding-bottom: 4px;
-  margin-bottom: 6px;
-}
-.carte-body{
-  display: flex;
-  height: calc(100% - 30px);
-}
-
-/* PHOTO */
-.photo-zone{
-  width: 120px;
-}
-
-.photo-zone img{
-  width: 110px;
-  height: 140px;
-  object-fit: cover;
-  border: 1px solid #000;
-}
-
-/* INFOS */
-.info-zone{
-  flex: 1;
-  font-size: 13px;
-  padding-left: 8px;
-}
-
-.ligne{
-  display: flex;
-  margin-bottom: 4px;
-}
-
-.cle{
-  width: 90px;
-  font-weight: bold;
-}
-
-.valeur{
-  flex: 1;
-}
-</style>
+        #telecharger-btn { display: none; background: #2ecc71; }
+    </style>
 </head>
 <body>
+
     <div class="ball">
-        <div class="header">Carte d'identité Otaku</div>
-        <div class="picture">
-            <input type="file" name="picture" id="imageInput" accept="image/*" onchange="lireImage(this)">
-            <img id="photo_profil" width="110" height="110">
-        </div>
-        <div class="contenue">
-            <label>Nom:</label>
-            <input type="text" id="nom" name="Nom" maxlength="14"/><br>
-            <label>Prenom:</label>
-            <input type="text" id="prenom" name="Prenom" maxlength="14"/><br>
-            <label>Waifu:</label>
-            <input type="text" name="waifu" maxlength="14" id="waifu"><br>
-            <label>Personnage préféré:</label>
-            <input type="text" name="Personnage préféré" maxlength="15" id="personnage"><br>
-            <label>Citation:</label>
-            <input type="text" name="Citation" maxlength="150" id="citation">
-        </div>
-   </div>
-      <div class="button">
-            <button onclick="genererCarte()">Générer la carte</button>
-      </div>
+        <div class="header">Carte Otaku</div>
+        <input type="file" id="imageInput" accept="image/*" onchange="lireImage(this)">
+        <img id="temp_img" style="display:none;">
+        
+        <label>Nom:</label>
+        <input type="text" id="nom" maxlength="14">
+        <label>Prénom:</label>
+        <input type="text" id="prenom" maxlength="14">
+        <label>Waifu:</label>
+        <input type="text" id="waifu" maxlength="14">
+        <label>Personnage préféré:</label>
+        <input type="text" id="personnage" maxlength="15">
+        <label>Citation:</label>
+        <input type="text" id="citation" maxlength="100">
+
+        <button onclick="genererCarte()">Générer la carte</button>
+    </div>
+
     <div id="carte"></div>
-       </div>
-      <div class="button">
-        <button id="telecharger-btn" onclick="telechargerCarte()">Télécharger la carte</button>
-    <script >
+    
+    <button id="telecharger-btn" onclick="telechargerCarte()">Télécharger la carte (PNG)</button>
+
+    <script>
+        let imageBase64 = "";
+
         function lireImage(input) {
-            let fichier = input.files[0];
-            let lecteur = new FileReader();
-            lecteur.onload = function(e) {
-                let image = document.getElementById('photo_profil');
-                image.src = e.target.result;
-            };
-            lecteur.readAsDataURL(fichier);
-        }function genererCarte() {
-    let prenom = document.getElementById('prenom').value;
-    let nom = document.getElementById('nom').value;
-    let waifu = document.getElementById('waifu').value;
-    let personnage = document.getElementById('personnage').value;
-    let citation = document.getElementById('citation').value;
-    let photoProfil = document.getElementById('photo_profil');
+            if (input.files && input.files[0]) {
+                let lecteur = new FileReader();
+                lecteur.onload = function(e) {
+                    imageBase64 = e.target.result;
+                };
+                lecteur.readAsDataURL(input.files[0]);
+            }
+        }
 
-    if (nom === "" || prenom === "" || waifu === "" || personnage === "" || citation === "" || photoProfil.src == "") {
-        alert("Veuillez tout remplir et ajouter l'image !!!");
-        return;
-    }
+        function genererCarte() {
+            const nom = document.getElementById('nom').value;
+            const prenom = document.getElementById('prenom').value;
+            const waifu = document.getElementById('waifu').value;
+            const perso = document.getElementById('personnage').value;
+            const citation = document.getElementById('citation').value;
 
-    let carte = `
-<div class="vrai">
+            if (!nom || !prenom || !imageBase64) {
+                alert("Remplissez au moins le Nom, Prénom et l'Image !");
+                return;
+            }
 
-  <div class="carte-header">
-    CARTE D’IDENTITÉ OTAKU
-  </div>
+            const codeCarte = `
+                <div class="vrai">
+                    <div class="carte-header">CARTE D’IDENTITÉ OTAKU</div>
+                    <div class="carte-body">
+                        <div class="photo-zone">
+                            <img src="${imageBase64}">
+                        </div>
+                        <div class="info-zone">
+                            <div class="ligne"><div class="cle">ID :</div><div class="valeur">OTK-${Math.floor(100000+Math.random()*900000)}</div></div>
+                            <div class="ligne"><div class="cle">Nom :</div><div class="valeur">${nom}</div></div>
+                            <div class="ligne"><div class="cle">Prénom :</div><div class="valeur">${prenom}</div></div>
+                            <div class="ligne"><div class="cle">Waifu :</div><div class="valeur">${waifu}</div></div>
+                            <div class="ligne"><div class="cle">Perso :</div><div class="valeur">${perso}</div></div>
+                            <div class="ligne"><div class="cle">Citation :</div><div class="valeur">"${citation}"</div></div>
+                        </div>
+                    </div>
+                </div>`;
 
-  <div class="carte-body">
+            document.getElementById('carte').innerHTML = codeCarte;
+            document.getElementById('telecharger-btn').style.display = 'block';
+        }
 
-    <div class="photo-zone">
-      <img src="${photoProfil.src}">
-    </div>
-
-    <div class="info-zone">
-
-      <div class="ligne">
-        <div class="cle">ID :</div>
-        <div class="valeur">OTK-${Math.floor(100000+Math.random()*900000)}</div>
-      </div>
-
-      <div class="ligne">
-        <div class="cle">Nom :</div>
-        <div class="valeur">${nom}</div>
-      </div>
-
-      <div class="ligne">
-        <div class="cle">Prénom :</div>
-        <div class="valeur">${prenom}</div>
-      </div>
-
-      <div class="ligne">
-        <div class="cle">Waifu :</div>
-        <div class="valeur">${waifu}</div>
-      </div>
-
-      <div class="ligne">
-        <div class="cle">Personnage :</div>
-        <div class="valeur">${personnage}</div>
-      </div>
-
-      <div class="ligne">
-        <div class="cle">Citation :</div>
-        <div class="valeur">${citation}</div>
-      </div>
-
-    </div>
-  </div>
-
-</div>
-`;
-    let carteElement = document.getElementById('carte');
-    carteElement.innerHTML = carte;
-
-    let telechargerBtn = document.getElementById('telecharger-btn');
-    telechargerBtn.style.display = 'block';
-
-  // Générez l'image directement ici si vous le souhaitez
-  html2canvas(carteElement, { scale: 2 }).then(canvas => {
-    const link = document.createElement('a');
-    link.href = canvas.toDataURL();
-    link.download = 'carte-identite-otaku.png';
-    link.click();
-  });
-}
-function telechargerCarte() {
-  html2canvas(carteElement, { scale: 2 }).then(canvas => {
-    canvas.toBlob(blob => {
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'carte-identite-otaku.png';
-      link.click();
-      URL.revokeObjectURL(link.href);
-    });
-  });
-}
-</script>
+        function telechargerCarte() {
+            const container = document.getElementById('carte');
+            html2canvas(container, {
+                scale: 2,
+                backgroundColor: null,
+                logging: false,
+                useCORS: true
+            }).then(canvas => {
+                const lien = document.createElement('a');
+                lien.href = canvas.toDataURL("image/png");
+                lien.download = "ma-carte-otaku.png";
+                lien.click();
+            });
+        }
+    </script>
 </body>
 </html>
