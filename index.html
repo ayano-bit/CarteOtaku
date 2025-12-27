@@ -5,91 +5,138 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <title>Carte d'identite otaku</title>
    <style>
- body {
-  font-family: 'Open Sans', sans-serif;
+   body {
+  background: radial-gradient(circle at top, #0a0f2c, #050714);
+  color: #e6faff;
 }
 
-  .ball {
-    border-radius: 13px;
-    background: linear-gradient(20deg, #81F4F8, #8E6BE8);
-    border: 3px none;
-    box-shadow: 3px 3px 3px 3px #5CDBFA;
-    font-size: 16px;
+.ball {
+  background: linear-gradient(135deg, #0d1b4c, #101a3c);
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4),
+              0 0 40px rgba(138, 43, 226, 0.4);
+  padding: 20px;
 }
 
 .header {
-    text-align: center;
-    font-size: xx-large;
-    color: rgb(38, 251, 255);
-    text-shadow: 1px 4px 5px rgb(38, 251, 255);
-    font-weight: bold;
+  color: #00f6ff;
+  text-shadow: 0 0 10px #00f6ff, 0 0 25px #00f6ff;
 }
 
-.picture {
-    text-align: center;
-}
-#photo_profil {
-  border: 2px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.contenue {
-    background-color: transparent;
-    font-size: 15px;
-}
-
-label{
-    display: block;
-    margin-bottom: 10px;
+label {
+  color: #9ffcff;
+  font-weight: 600;
 }
 
 input[type="text"] {
-    width:300px;
-    height:17px;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  color: #fff;
+  border-radius: 6px;
 }
-.button {
-    text-align: center;
-    margin: 20px;
+
+input::placeholder {
+  color: #aaa;
+}
+
+.vrai {
+  background: linear-gradient(135deg, #0b133d, #0f1a4f);
+  border: 2px solid rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5),
+              0 0 50px rgba(255, 0, 255, 0.3);
+  padding: 20px;
+  margin: auto;
+  width: 420px;
+  color: #e8fbff;
+}
+
+.vrai img {
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  border: 2px solid #00f6ff;
+  box-shadow: 0 0 15px #00f6ff;
+}
+
+.identite {
+  color: #00f6ff;
+  text-shadow: 0 0 10px #00f6ff;
+}
+
+.vrai p {
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  padding-bottom: 5px;
+}
+
+.cite {
+  color: #ff8cff;
+  text-shadow: 0 0 8px #ff8cff;
 }
 
 button {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  background: linear-gradient(135deg, #00f6ff, #8a2be2);
+  box-shadow: 0 0 10px #00f6ff;
 }
 
 button:hover {
-    background-color: #3e8e41;
-} 
-.vrai{
-  border-radius:12px 12px 12px 12px ; 
-  box-shadow:4px 4px 4px 4px;
-  margin:15px;
-  width: 400px;
-  height: auto;
-  background-color:#3D5AFE;
+  box-shadow: 0 0 20px #00f6ff, 0 0 40px #8a2be2;
+}} /*
+ #carte {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}*//*
+ #carte {
+  background: linear-gradient(45deg, #ff69b4, #ffe6cc);
+  opacity: 0.8;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}*/
+.vrai {
+  width: 420px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #0b133d, #0f1a4f);
+  border-radius: 15px;
+  border: 2px solid rgba(0, 255, 255, 0.5);
+  padding: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
 }
 
-#carte {
-  /*background: rgba(255, 255, 255, 0.2); */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 30px;
-  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border: 10px solid rgba(255, 255, 255, 0.3);*/
+.photo-zone {
+  width: 110px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.identite{
-    text-align: center;
-    font-size: xx-large;
-    color: rgb(38, 251, 255);
-    text-shadow: 1px 4px 5px rgb(38, 251, 255);
-    font-weight: bold;
+
+.photo-zone img {
+  width: 100px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px; /* photo carte, PAS rond */
+  border: 2px solid #00f6ff;
+}
+
+.info-zone {
+  flex: 1;
+  padding-left: 15px;
+  font-size: 13px;
+}
+
+.info-zone p {
+  margin: 3px 0;
+}
+
+.identite {
+  font-size: 16px;
+  color: #00f6ff;
+  margin-bottom: 6px;
 }
 .cite{
   font-size:20px;
@@ -98,10 +145,55 @@ button:hover {
 }
 h6{
   text-align: center;
-  background-color: #F6E7B6;
+  background-color: red;
 }
 #telecharger-btn{
   display:none;
+}
+.carte-header{
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid #000;
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+}
+.carte-body{
+  display: flex;
+  height: calc(100% - 30px);
+}
+
+/* PHOTO */
+.photo-zone{
+  width: 120px;
+}
+
+.photo-zone img{
+  width: 110px;
+  height: 140px;
+  object-fit: cover;
+  border: 1px solid #000;
+}
+
+/* INFOS */
+.info-zone{
+  flex: 1;
+  font-size: 13px;
+  padding-left: 8px;
+}
+
+.ligne{
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.cle{
+  width: 90px;
+  font-weight: bold;
+}
+
+.valeur{
+  flex: 1;
 }
 </style>
 </head>
@@ -148,32 +240,65 @@ h6{
     let personnage = document.getElementById('personnage').value;
     let citation = document.getElementById('citation').value;
     let photoProfil = document.getElementById('photo_profil');
-    
+
     if (nom === "" || prenom === "" || waifu === "" || personnage === "" || citation === "" || photoProfil.src == "") {
         alert("Veuillez tout remplir et ajouter l'image !!!");
         return;
     }
-    
+
     let carte = `
-        <div class="vrai">
-            <div class="identite">
-                <p>Carte d'identité Otaku</p>
-            </div>
-            <img src="${photoProfil.src}" width="110" height="110">
-            <p>Nom: ${nom}</p>
-            <p>Prénom: ${prenom}</p>
-            <p>Waifu: ${waifu}</p>
-            <p>Personnage préféré : ${personnage}</p>
-            <div class="cite">
-                <p>"${citation}"</p>
-            </div>
-            <h6>Ceci est une carte d'identité pour Otaku</h6>
-        </div>
-    `;
-    
+<div class="vrai">
+
+  <div class="carte-header">
+    CARTE D’IDENTITÉ OTAKU
+  </div>
+
+  <div class="carte-body">
+
+    <div class="photo-zone">
+      <img src="${photoProfil.src}">
+    </div>
+
+    <div class="info-zone">
+
+      <div class="ligne">
+        <div class="cle">ID :</div>
+        <div class="valeur">OTK-${Math.floor(100000+Math.random()*900000)}</div>
+      </div>
+
+      <div class="ligne">
+        <div class="cle">Nom :</div>
+        <div class="valeur">${nom}</div>
+      </div>
+
+      <div class="ligne">
+        <div class="cle">Prénom :</div>
+        <div class="valeur">${prenom}</div>
+      </div>
+
+      <div class="ligne">
+        <div class="cle">Waifu :</div>
+        <div class="valeur">${waifu}</div>
+      </div>
+
+      <div class="ligne">
+        <div class="cle">Personnage :</div>
+        <div class="valeur">${personnage}</div>
+      </div>
+
+      <div class="ligne">
+        <div class="cle">Citation :</div>
+        <div class="valeur">${citation}</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+`;
     let carteElement = document.getElementById('carte');
     carteElement.innerHTML = carte;
-    
+
     let telechargerBtn = document.getElementById('telecharger-btn');
     telechargerBtn.style.display = 'block';
 
